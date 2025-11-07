@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brian Smith | CIS & Cybersecurity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="logo">Brian Smith</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="resume.html">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>Brian Smith</h1>
+        <p>Security-minded CIS student building documentation, automation and audit-style projects.</p>
+        <p>
+          <a href="https://github.com/smitthbrian" class="button" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/briansmith2025/" class="button secondary" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About</h2>
+      <p>
+        I’m focused on cybersecurity, compliance and taking messy log/audit workflows and making them repeatable. Long term I want to help integrate AI into security tooling in a way that’s actually ethical and usable.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>SOWForge (VBA)</h3>
+          <p>Automated SOW creation to reduce prep time.</p>
+          <a href="https://github.com/smitthbrian" target="_blank" rel="noreferrer">View repo</a>
+        </article>
+        <article class="card">
+          <h3>Security / Audit Labs</h3>
+          <p>Wireshark incident report, password cracking labs, log audits.</p>
+          <a href="https://github.com/smitthbrian" target="_blank" rel="noreferrer">View repo</a>
+        </article>
+        <article class="card">
+          <h3>FedRAMP / NIST Work</h3>
+          <p>Control mapping and documentation.</p>
+          <a href="https://github.com/smitthbrian" target="_blank" rel="noreferrer">View repo</a>
+        </article>
+      </div>
+
+      <h2 style="margin-top:3rem;">Other GitHub Repos</h2>
+      <p id="repos-hint">Loading public repos…</p>
+      <div id="repo-list" class="repo-list"></div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Security / CIS Projects</h3>
+          <p class="time">2024 – Present</p>
+          <p>Course-linked projects in cybersecurity, logging and audit-style reporting.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Philmont Scout Ranch</h3>
+          <p class="time">Seasonal</p>
+          <p>Leadership, instruction, safety. Good team story.</p>
+        </div>
+      </div>
+
+      <h2>Education</h2>
+      <p><strong>Appalachian State University</strong>, BSBA in CIS, Cybersecurity concentration, Dec 2025.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:Smitthbrian2@gmail.com">Smitthbrian2@gmail.com</a> |
+        <a href="https://github.com/smitthbrian" target="_blank" rel="noreferrer">GitHub</a> |
+        <a href="https://www.linkedin.com/in/briansmith2025/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Brian Smith</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    fetch('https://api.github.com/users/smitthbrian/repos?sort=updated')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('repo-list');
+        const hint = document.getElementById('repos-hint');
+        hint.style.display = 'none';
+        data.slice(0, 6).forEach(repo => {
+          const div = document.createElement('div');
+          div.className = 'repo-card';
+          div.innerHTML = `
+            <h4>${repo.name}</h4>
+            <p>${repo.description ? repo.description : 'No description provided.'}</p>
+            <a href="${repo.html_url}" target="_blank" rel="noreferrer">View Repo</a>
+          `;
+          list.appendChild(div);
+        });
+      })
+      .catch(() => {
+        document.getElementById('repos-hint').textContent = 'Could not load repos.';
+      });
+  </script>
+</body>
+</html>
