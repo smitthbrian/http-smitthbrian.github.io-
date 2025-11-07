@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Brian Smith | CIS & Cybersecurity</title>
+  <title>Brian Smith | Information Systems & Cybersecurity</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
@@ -65,11 +65,38 @@
         </article>
       </div>
 
-      <h2 style="margin-top:3rem;">Other GitHub Repos</h2>
-      <p id="repos-hint">Loading public repos…</p>
-      <div id="repo-list" class="repo-list"></div>
-    </div>
-  </section>
+<h2 style="margin-top:3rem;">Other GitHub Repos</h2>
+<div class="repo-list">
+  <div class="repo-card">
+    <h4>ETL Project</h4>
+    <p>Data extraction / transformation / load workflow, demonstrating practical automation.</p>
+    <a href="https://github.com/smitthbrian/ETL-Project" target="_blank" rel="noreferrer">View Repo</a>
+  </div>
+
+  <div class="repo-card">
+    <h4>Incident Disclosure Mock Report</h4>
+    <p>Simulated incident report for a board-level audience, focused on disclosure and compliance.</p>
+    <a href="https://github.com/smitthbrian/Incident-Disclosure-Mock-Report" target="_blank" rel="noreferrer">View Repo</a>
+  </div>
+
+  <div class="repo-card">
+    <h4>VPN</h4>
+    <p>Lab work around VPN concepts and secure connectivity.</p>
+    <a href="https://github.com/smitthbrian/VPN" target="_blank" rel="noreferrer">View Repo</a>
+  </div>
+
+  <div class="repo-card">
+    <h4>Web Application Vulnerabilities Simulation</h4>
+    <p>Simulation of common web app weaknesses and how to analyze them.</p>
+    <a href="https://github.com/smitthbrian/Web-Application-Vulnerabilities-Simulation" target="_blank" rel="noreferrer">View Repo</a>
+  </div>
+
+  <div class="repo-card">
+    <h4>Password Cracking</h4>
+    <p>Hashcat / rockyou-based password cracking exercises.</p>
+    <a href="https://github.com/smitthbrian/Password-Cracking" target="_blank" rel="noreferrer">View Repo</a>
+  </div>
+</div>
 
  <section id="experience" class="section">
   <div class="container">
@@ -101,12 +128,12 @@
 
       <!-- Philmont -->
       <div class="timeline-item">
-        <h3>Assistant Manager & Ranger, <em>Philmont Scout Ranch</em></h3>
+        <h3>Kitchen Assistant Manager / Ranger, <em>Philmont Scout Ranch</em></h3>
         <p class="time">Cimarron, NM · Seasonal 2021 – 2024</p>
         <p>
-          Managed seasonal staff and logistics for large-scale outdoor operations. Led crews, trained new hires, and coordinated 
-          multi-day backcountry programs emphasizing safety, leadership, and conservation. Reinforced teamwork, accountability, 
-          and adaptability under pressure.
+          Led & supervised kitchen crew, ensuring health standards, inventory management, and team performance. 
+          Conducted employee evaluations, providing feedback and aligning team performance with operational goals. 
+          Taught safe backpacking and outdoor ethics as a Ranger, using EDGE method for skills and leadership development
         </p>
       </div>
 
@@ -154,27 +181,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    fetch('https://api.github.com/users/smitthbrian/repos?sort=updated')
-      .then(res => res.json())
-      .then(data => {
-        const list = document.getElementById('repo-list');
-        const hint = document.getElementById('repos-hint');
-        hint.style.display = 'none';
-        data.slice(0, 6).forEach(repo => {
-          const div = document.createElement('div');
-          div.className = 'repo-card';
-          div.innerHTML = `
-            <h4>${repo.name}</h4>
-            <p>${repo.description ? repo.description : 'No description provided.'}</p>
-            <a href="${repo.html_url}" target="_blank" rel="noreferrer">View Repo</a>
-          `;
-          list.appendChild(div);
-        });
-      })
-      .catch(() => {
-        document.getElementById('repos-hint').textContent = 'Could not load repos.';
-      });
   </script>
 </body>
 </html>
