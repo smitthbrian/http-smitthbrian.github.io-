@@ -64,6 +64,7 @@ nav a:hover {
   color: var(--text);
 }
 
+/* hero 2-column */
 .hero-2col {
   position: relative;
   background: linear-gradient(180deg, #0b1410 0%, #0d1a14 100%);
@@ -154,10 +155,89 @@ nav a:hover {
   font-size: 0.82rem;
 }
 
+/* sections */
+.section {
+  padding: 3.1rem 0;
+}
+
+.section h2 {
+  margin-bottom: 1.3rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* cards and repo cards */
+.card,
+.repo-card {
+  background: rgba(17, 24, 20, 0.55);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.1rem 1rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+}
+
+.card h3,
+.repo-card h4 {
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.card a,
+.repo-card a {
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.card a:hover,
+.repo-card a:hover {
+  text-decoration: underline;
+}
+
+/* grids */
+.grid,
+.repo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.05rem;
+}
+
+/* timeline */
+.timeline .timeline-item {
+  border-left: 1px solid rgba(240, 246, 243, 0.03);
+  padding-left: 1rem;
+  margin-left: 0.3rem;
+  margin-bottom: 1.1rem;
+}
+
+.time {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+}
+
+/* contact & footer */
+.footer {
+  padding: 2.5rem 0 3rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* mobile */
 @media (max-width: 700px) {
+  nav { display: none; }
+  .hero-2col { padding-top: 3.2rem; }
   .hero-right p { max-width: none; }
   .profile-pic { margin-inline: auto; }
   .hero-left { text-align: center; }
   .social-links { justify-content: center; display: flex; gap: 1rem; }
 }
-
